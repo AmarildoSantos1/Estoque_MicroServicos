@@ -1,0 +1,13 @@
+server:
+  port: 0 # Para gerar uma porta aleatória (evita conflito local)
+
+spring:
+  application:
+    name: estoque-service # Nome do serviço para o Eureka
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true

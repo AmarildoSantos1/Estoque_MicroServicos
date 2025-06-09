@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: apigateway
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# Rotas do Gateway
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: estoque-service
+          uri: lb://estoque-service
+          predicates:
+            - Path=/estoque/**
+        - id: fornecedor-service
+          uri: lb://fornecedor-service
+          predicates:
+            - Path=/fornecedores/**
+        - id: funcionario-service
+          uri: lb://funcionario-service
+          predicates:
+            - Path=/funcionarios/**
